@@ -50,15 +50,55 @@ function clearAll() {
   output.textContent = '0';
 }
 
+//Функция подсчета количества цифр
+function countDigits(str) {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] >= '0' && str[i] <= '9') {
+      count++;
+    }
+  }
+  return count;
+}
+
+//Функция ограничения строки отображения в калькуляторе до 10 цифр
+function limitTo10Digits(str) {
+  let result = '';
+  let digitCount = 0;
+  
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (char >= '0' && char <= '9') {
+      if (digitCount < 10) {
+        result += char;
+        digitCount++;
+      }
+    } else {
+      result += char;
+    }
+  }
+  
+  return result;
+}
+
 //Функция обновления элемента вывода
 function updateDisplay(value) {
-  output.textContent = value;
+  const limitedValue = limitTo10Digits(value.toString());
+  output.textContent = limitedValue;
 }
 
 //Функция обработки цифр
 function handleDigit(key) {
   const current = sign === '' ? x : y;
   if (key === '.' && current.includes('.')) return;
+
+  // Проверяем количество цифр перед добавлением новой
+  if (key !== '.') {
+    const currentDigits = countDigits(current);
+    if (currentDigits >= 10) {
+      return; // Не добавляем, если уже 10 цифр
+    }
+  }
 
   if (result) {
     if (sign === '') {
