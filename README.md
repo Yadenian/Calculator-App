@@ -43,7 +43,7 @@ In js folder lies theme.js file where i made theme-choise for user to select his
 
 ----------------------------------------------------------------------------------------------------------------
 
-#Calculator App
+# Calculator App
 
 Простой веб-калькулятор, выполняющий основные математические операции: сложение, вычитание, умножение, деление и расчёт процентов. Описание задачи: https://docs.google.com/document/d/1zpXXeSae-BlcxPKgw3DhxZA92cspVailrPYoaXSYrW8/edit?tab=t.0#heading=h.5p521hfkjq82
 
